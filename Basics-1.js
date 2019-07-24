@@ -1,26 +1,22 @@
-function Button(props) {
-  const handleClick = () => props.onClickFunction(props.increment);
+const render = () => {
+  document.getElementById("mountNode").innerHTML = `
+     <Div>
+         Hello HTML
+       <input />
+       <pre> ${new Date().toLocaleTimeString()} </pre>
+      </Div>
+  `;
 
-  return <button onClick={handleClick}>+{props.increment}</button>;
-}
-
-function Display(props) {
-  return <div> {props.message} </div>;
-}
-
-function App() {
-  const [counter1, setcounter1] = useState(42);
-  const incriemntCounter = increment => setcounter1(counter1 + increment);
-  return (
-    <div>
-      <Button onClickFunction={incriemntCounter} increment={1} />
-      <Button onClickFunction={incriemntCounter} increment={5} />
-      <Button onClickFunction={incriemntCounter} increment={50} />
-      <Button onClickFunction={incriemntCounter} increment={500} />
-      <Button onClickFunction={incriemntCounter} increment={1000} />
-      <Display message={counter1} />
-    </div>
+  ReactDOM.render(
+    React.createElement(
+      "div",
+      null,
+      "Hello react",
+      React.createElement("input", null),
+      React.createElement("pre", null, new Date().toLocaleTimeString())
+    ),
+    document.getElementById("mountNode2")
   );
-}
+};
 
-ReactDOM.render(<App />, document.getElementById("mountNode"));
+setInterval(render, 1000);
